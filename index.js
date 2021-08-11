@@ -1,9 +1,8 @@
 class Libro {
-    constructor(nombre, autor, precio, cantidad) {
+    constructor(nombre, autor, precio) {
         this.nombre = nombre.toUpperCase();
         this.autor = autor.toUpperCase();
         this.precio = parseFloat(precio);
-        this.cantidad = cantidad;
         this.vendido = false;
         this.stock = true;
     }
@@ -26,7 +25,7 @@ do {
         var nombreLibro = comprobacion;
         var autorLibro = prompt('ingrese el autor del libro');
         var precioLibro = prompt ('ingrese el precio del libro');
-        arrayLibros.push(new Libro(nombreLibro, autorLibro, precioLibro, cantidadLibro));
+        arrayLibros.push(new Libro(nombreLibro, autorLibro, precioLibro));
     }
 }
 while (comprobacion != 'fin' || comprobacion != 'FIN' || comprobacion != 'Fin');
@@ -92,4 +91,16 @@ for (const Libro of libros) {
                             <h5> $ ${Libro.precio} </h5>`
     contenedor.className = 'container'
     document.body.appendChild(contenedor);
+}
+
+let miFormulario = document.getElementById('formulario');
+miFormulario.addEventListener('submit', validarFormulario);
+
+function validarFormulario (e) {
+    e.preventDefault ();
+
+    let formulario = e.target
+
+    console.log(formulario.children[0].value);
+    console.log(formulario.children[1].value );
 }
